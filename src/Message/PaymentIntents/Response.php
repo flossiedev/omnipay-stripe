@@ -168,4 +168,19 @@ class Response extends BaseResponse implements RedirectResponseInterface
 
         return null;
     }
+
+    /**
+     * Get the client secret.
+     *
+     * @return string|null
+     */
+    public function getClientSecret()
+    {
+        if (isset($this->data['object']) && 'payment_intent' === $this->data['object']) {
+            return $this->data['client_secret'];
+        }
+
+        return null;
+    }
+
 }

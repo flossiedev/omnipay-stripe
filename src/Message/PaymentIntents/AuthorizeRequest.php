@@ -334,20 +334,20 @@ class AuthorizeRequest extends AbstractRequest
      * @param $value
      * @return AbstractRequest provides a fluent interface.
      */
-    public function setOffSession($value)
+    /* public function setOffSession($value)
     {
         return $this->setParameter('off_session', $value);
-    }
+    } */
 
     /**
      * Get the setup_future_usage parameter.
      *
      * @return mixed
      */
-    public function getOffSession()
+    /* public function getOffSession()
     {
         return $this->getParameter('off_session');
-    }
+    } */
 
     /**
      * @inheritdoc
@@ -397,10 +397,10 @@ class AuthorizeRequest extends AbstractRequest
                 'type' => 'card',
                 'card' => ['token' => $this->getToken()],
             ];
-        } else {
+        } /* else {
             // one of cardReference, token, or card is required
             $this->validate('paymentMethod');
-        }
+        } */
 
         if ($this->getCustomerReference()) {
             $data['customer'] = $this->getCustomerReference();
@@ -412,8 +412,8 @@ class AuthorizeRequest extends AbstractRequest
 
         $data['off_session'] = $this->getOffSession() ? 'true' : 'false';
 
-        $data['confirmation_method'] = 'manual';
-        $data['capture_method'] = 'manual';
+        $data['confirmation_method'] = 'automatic';
+        $data['capture_method'] = 'automatic';
 
         $data['confirm'] = $this->getConfirm() ? 'true' : 'false';
 
